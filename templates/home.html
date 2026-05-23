@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Booking</h1>
+    {% for appart in appartments %}
+        <h2>{{ appart.name }}</h2>
+        <p>{{ appart.description }}</p>
+        <p>{{ appart.price }}</p>
+        
+    {% endfor %}
+{% endblock content %}
