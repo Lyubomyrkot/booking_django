@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Appartment</h1>
+    <img src="{{ apartment.image.url }}" alt="Apartment Image" class="img-fluid">
+    <p>{{ apartment.name }}</p>
+    <p>{{ apartment.description }}</p>
+    <p>{{ apartment.price }}</p>
+{% endblock %}

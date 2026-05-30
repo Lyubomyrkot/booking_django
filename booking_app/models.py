@@ -23,6 +23,11 @@ class Apartment(models.Model):
 
     def __str__(self):
         return f"{self.name} - {self.location} - ${self.price}"
+    
+    class Meta:
+        verbose_name = "Apartment"
+        verbose_name_plural = "Apartments"
+        ordering = ['name']
 
 
 class Booking(models.Model):
@@ -40,3 +45,8 @@ class Booking(models.Model):
 
     def __str__(self):
         return f"Booking for {self.guest_name} {self.guest_surname} at {self.apartment.name} from {self.check_in_date} to {self.check_out_date}"
+    
+    class Meta:
+        verbose_name = "Booking"
+        verbose_name_plural = "Bookings"
+        ordering = ['-created_at']

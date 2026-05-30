@@ -2,10 +2,28 @@
 
 {% block content %}
     <h1>Booking</h1>
-    {% for appart in appartments %}
-        <h2>{{ appart.name }}</h2>
-        <p>{{ appart.description }}</p>
-        <p>{{ appart.price }}</p>
+    {{ render_string }}
+
+    {% if request.user.is_authenticated %}
+        <p>Welcome, {{ request.user.username }}!</p>
         
-    {% endfor %}
-{% endblock content %}
+        <div class="d-flex flex-wrap gap-3">
+        {% for appart in appartments %}
+            <div class="card" style="width: 18rem;">
+                {% if appart.image %}
+                    <img src="{{ appart.image.url }}" class="card-img-top" alt="...">
+                {% endif %}
+                <div class="card-body">
+                    <p class="card-text">{{ appart.name }}</p>
+                    <p class="card-text">{{ appart.description }}</p>
+                    <a class="stretched-link" href="{% url 'apartments_page' apartment_id=appart.id %}"></a>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+
+    {% else %}
+        <p>Please log in to view your bookings.</p>
+    {% endif %}
+
+{% endblock %}
