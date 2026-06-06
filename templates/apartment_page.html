@@ -6,4 +6,5 @@
     <p>{{ apartment.name }}</p>
     <p>{{ apartment.description }}</p>
     <p>{{ apartment.price }}</p>
+    <a href="{% url 'booking_page' apartment_id=apartment.id %}" class="btn btn-primary mb-5">Book Now</a>
 {% endblock %}

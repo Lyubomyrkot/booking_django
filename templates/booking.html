@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="card" style="width: 18rem;">
+        {% if apartment.image %}
+            <img src="{{ apartment.image.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">{{ apartment.name }}</p>
+            <p class="card-text">{{ apartment.description }}</p>
+            <a class="stretched-link" href="{% url 'apartments_page' apartment_id=apartment.id %}"></a>
+        </div>
+    </div>
+
+    <div class="col-md-6 ms-4 mt-3">
+        <form action="" method="post">
+            {% csrf_token %}
+            <div class="row g-3">
+    
+                <div class="col">
+                    <input name="first_name" type="text" required class="form-control" placeholder="First name" aria-label="First name">
+                </div>
+                <div class="col">
+                    <input name="last_name" type="text" required class="form-control" placeholder="Last name" aria-label="Last name">
+                </div>
+                <div class="col">
+                    <input name="email" type="email" required class="form-control" placeholder="Email" aria-label="Email">
+                </div>
+                <div class="col">
+                    <input name="phone" type="tel" required class="form-control" placeholder="Phone" aria-label="Phone">
+                </div>
+            </div>
+            <div class="row g-3 mt-3">
+                <div class="col">
+                    <p class="mb-2">Check-in Date</p>
+                    <input name="check_in" type="datetime-local" required class="form-control" placeholder="Check-in Date" aria-label="Check-in Date">
+                </div>
+                <div class="col">
+                    <p class="mb-2">Check-out Date</p>
+                    <input name="check_out" type="datetime-local" required class="form-control" placeholder="Check-out Date" aria-label="Check-out Date">
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary mt-3">Book Now</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

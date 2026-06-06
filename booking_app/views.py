@@ -10,3 +10,8 @@ def home(request):
 def apartments_page(request, apartment_id):
     apartment = Apartment.objects.get(id=apartment_id)
     return render(request, template_name='apartment_page.html', context={'apartment': apartment})
+
+def booking_page(request, apartment_id):
+    apartment = Apartment.objects.get(id=apartment_id)
+    
+    return render(request, template_name='booking.html', context={'apartment': apartment})
