@@ -4,26 +4,43 @@
     <h1>Booking</h1>
     {{ render_string }}
 
-    {% if request.user.is_authenticated %}
-        <p>Welcome, {{ request.user.username }}!</p>
-        
-        <div class="d-flex flex-wrap gap-3">
-        {% for appart in appartments %}
-            <div class="card" style="width: 18rem;">
-                {% if appart.image %}
-                    <img src="{{ appart.image.url }}" class="card-img-top" alt="...">
-                {% endif %}
-                <div class="card-body">
-                    <p class="card-text">{{ appart.name }}</p>
-                    <p class="card-text">{{ appart.description }}</p>
-                    <a class="stretched-link" href="{% url 'apartments_page' apartment_id=appart.id %}"></a>
-                </div>
+    <form action="" method="get">
+        <div class="row g-3 mt-3 mb-4">
+            <div class="col">
+                <p class="mb-2">Check-in Date</p>
+                <input value="{{ check_in }}" name="check_in" type="datetime-local" required class="form-control" placeholder="Check-in Date" aria-label="Check-in Date">
             </div>
-        {% endfor %}
+            <div class="col">
+                <p class="mb-2">Check-out Date</p>
+                <input value="{{ check_out }}" name="check_out" type="datetime-local" required class="form-control" placeholder="Check-out Date" aria-label="Check-out Date">
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary mt-4">Check Availability</button>
+            </div>
         </div>
+    </form>
 
-    {% else %}
+
+    <!-- {% if request.user.is_authenticated %}
+        <p>Welcome, {{ request.user.username }}!</p> -->
+        
+    <div class="d-flex flex-wrap gap-3">
+    {% for appart in appartments %}
+        <div class="card" style="width: 18rem;">
+            {% if appart.image %}
+                <img src="{{ appart.image.url }}" class="card-img-top" alt="...">
+            {% endif %}
+            <div class="card-body">
+                <p class="card-text">{{ appart.name }}</p>
+                <p class="card-text">{{ appart.description }}</p>
+                <a class="stretched-link" href="{% url 'apartments_page' apartment_id=appart.id %}"></a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+    <!-- {% else %}
         <p>Please log in to view your bookings.</p>
-    {% endif %}
+    {% endif %} -->
 
 {% endblock %}

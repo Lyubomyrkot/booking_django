@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Booking Confirmation</h1>
+
+<div class="row">
+    <div class="card" style="width: 18rem;">
+        {% if apartment.image %}
+            <img src="{{ apartment.image.url }}" class="card-img-top" alt="...">
+        {% endif %}
+        <div class="card-body">
+            <p class="card-text">{{ apartment.name }}</p>
+            <p class="card-text">{{ apartment.description }}</p>
+            <a class="stretched-link" href="{% url 'apartments_page' apartment_id=apartment.id %}"></a>
+        </div>
+    </div>
+
+    <div class="col-md-6 ms-4 mt-3">
+        <p>Thank you for your booking, {{ first_name }} {{ last_name }}!</p>
+        <p>Your booking details:</p>
+        <ul>
+            <li>Email: {{ email }}</li>
+            <li>Phone: {{ phone }}</li>
+            <li>Check-in Date: {{ check_in }}</li>
+            <li>Check-out Date: {{ check_out }}</li>
+        </ul>
+    </div>
+
+</div>
+
+{% endblock %}

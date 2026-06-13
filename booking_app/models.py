@@ -31,7 +31,7 @@ class Apartment(models.Model):
 
 
 class Booking(models.Model):
-    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE)
+    apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE, related_name='bookings')
     guest_name = models.CharField(max_length=100)
     guest_surname = models.CharField(max_length=100)
     guest_email = models.EmailField()
