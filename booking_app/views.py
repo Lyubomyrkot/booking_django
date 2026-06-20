@@ -4,6 +4,8 @@ import booking
 from .models import Apartment, Booking
 from django.http import HttpResponse
 
+from django.contrib.auth.decorators import login_required
+
 def home(request):
     check_in = request.GET.get('check_in')
     check_out = request.GET.get('check_out')
@@ -61,4 +63,7 @@ def booking_page(request, apartment_id):
 
     return render(request, template_name='booking.html', context={'apartment': apartment})
 
-
+@login_required
+def my_bookings(request):
+    bookings = Booking.objects.filter(user=request.user)
+    return render(request, template_name='my_bookings.html', context={'bookings': bookings})

@@ -23,6 +23,7 @@ from . import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('booking_app.urls')),
+    path('', include('auth_system.urls')),
 ]
 
 if settings.DEBUG:
